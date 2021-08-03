@@ -10,6 +10,22 @@
     }) -depth[d].begin();
 ```
 ```cpp
+struct PriceInfo { double price; };
+ 
+int main()
+{
+    const std::vector<int> data = { 1, 2, 4, 5, 5, 6 };
+    for (int i = 0; i < 8; ++i) {
+        // Search for first element x such that i ≤ x
+        auto lower = std::lower_bound(data.begin(), data.end(), i);
+ 
+        std::cout << i << " ≤ ";
+        lower != data.end()
+            ? std::cout << *lower << " at index " << std::distance(data.begin(), lower)
+            : std::cout << "[not found]";
+        std::cout << '\n';
+    }
+ 
     std::vector<PriceInfo> prices = { {100.0}, {101.5}, {102.5}, {102.5}, {107.3} };
     for(double to_find: {102.5, 110.2}) {
       auto prc_info = std::lower_bound(prices.begin(), prices.end(), to_find,
@@ -22,12 +38,12 @@
           : std::cout << to_find << " not found";
       std::cout << '\n';
     }
-
-      /*
-        output
-        102.5 at index 2
-        110.2 not found
-      */
+}
+/*
+  output
+  102.5 at index 2
+  110.2 not found
+*/
 ```
   - Here, depth[d] is a vector in which all nodes at depth 'd' are sorted according to their 'tin' times.
   - So, 'ind' will be the first index of the node in depth[d] array whose 'tin' time is >= T (Or, the first node for which tin[node]<T gets false).
@@ -47,7 +63,11 @@
     }) -depth[d].begin();
 ```
 ```cpp
-  std::vector<PriceInfo> prices = { {100.0}, {101.5}, {102.5}, {102.5}, {107.3} };
+struct PriceInfo { double price; };
+ 
+int main()
+{
+    std::vector<PriceInfo> prices = { {100.0}, {101.5}, {102.5}, {102.5}, {107.3} };
     for(double to_find: {102.5, 110.2}) {
       auto prc_info = std::upper_bound(prices.begin(), prices.end(), to_find,
           [](double value, const PriceInfo& info){
@@ -59,12 +79,12 @@
           : std::cout << to_find << " not found";
       std::cout << '\n';
     }
-    
-    /*
-      output
-      107.3 at index 4
-      110.2 not found
-    */
+}
+/*
+  output
+  102.5 at index 2
+  110.2 not found
+*/
  ```
 
   - Here, depth[d] is a vector in which all nodes at depth 'd' are sorted according to their 'tout' times.
