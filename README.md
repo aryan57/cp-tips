@@ -1,4 +1,4 @@
-#### std::lower_bound https://en.cppreference.com/w/cpp/algorithm/lower_bound\
+#### std::lower_bound https://en.cppreference.com/w/cpp/algorithm/lower_bound
 ---
   - It returns the iterator for which the boolean function 'comp' returns false.
   - If function values are monotonic i.e,[true,true,...,true,false,false,...,false],then it returns the first iterator pointing to false.
