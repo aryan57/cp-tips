@@ -94,3 +94,37 @@ int main()
  ```
 
 See https://codeforces.com/contest/208/submission/124785810 for more info on lower_bound/upper_bound
+
+#### 0-1 BFS https://codeforces.com/blog/entry/22276
+---
+```
+for all v in vertices:
+	dist[v] = inf
+dist[source] = 0;
+deque d
+d.push_front(source)
+while d.empty() == false:
+	vertex = get front element and pop as in BFS.
+	for all edges e of form (vertex , u):
+		if travelling e relaxes distance to u:
+			relax dist[u]
+			if e.weight = 1:
+				d.push_back(u)
+			else:
+				d.push_front(u)
+```
+
+- Can we apply the same trick if our edge weights can only be 0 and x (x >= 0) ? (Yes)
+- Can we apply the same trick if our edge weights are x and x+1 (x >= 0) ? (No) https://codeforces.com/blog/entry/22276?#comment-268701
+- Can we apply the same trick if our edge weights are x and y (x,y >= 0) ? (No)
+
+![162843415495961947](https://user-images.githubusercontent.com/55305876/128636279-17568633-af97-4c08-be72-f8db1ccb6722.png)
+
+
+- Why dont we use a visited array in 0-1 BFS but use in a normal BFS ? (https://codeforces.com/blog/entry/22276?#comment-610031)
+
+If initially any vertex is added in dequeue as dist[u], then it can be added again in dequeue if relaxing edge makes distance as dis[u]-1(it cannot make less than that). so any vertex cannot be added more than twice.
+
+![tuxpi com 1628434353](https://user-images.githubusercontent.com/55305876/128636283-24272aa8-4969-4e4b-b007-9767462243a1.jpg)
+
+
