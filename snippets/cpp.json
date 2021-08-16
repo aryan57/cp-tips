@@ -830,6 +830,26 @@
         ],
         "description": "Suffix Array"
     },
+    "Mobius Function": {
+        "prefix": "lib-mobius",
+        "body": [
+            "// very important when solving inclusion-exclusion number theory problems",
+            "const int mxn = 1e5;",
+            "int mobius[mxn+1];",
+            "void Mobius(){",
+            "",
+            "\tmobius[1]=1;",
+            "    for(int i=2;i<=mxn;++i)",
+            "    {",
+            "        if(spf[i/spf[i]]==spf[i])",
+            "            mobius[i]=0;",
+            "        else",
+            "            mobius[i]=-1*mobius[i/spf[i]];",
+            "    }",
+            "}"
+        ],
+        "description": "Mobius Function"
+    },
     "LCP Array": {
         "prefix": "lib-lcp-array",
         "body": [
