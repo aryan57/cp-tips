@@ -127,4 +127,13 @@ If initially any vertex is added in dequeue as dist[u], then it can be added aga
 
 ![tuxpi com 1628434353](https://user-images.githubusercontent.com/55305876/128636283-24272aa8-4969-4e4b-b007-9767462243a1.jpg)
 
-
+#### Recursive Lambda Function with void return
+ We can't use the `auto` keyword for any recusive function having void return, so write like this:
+ ```cpp
+ function<void(int)> dfs = [&](int u){
+            ans.push_back(u);
+            for(int to : adj[u]){
+                dfs(to);
+            }
+        };
+```
