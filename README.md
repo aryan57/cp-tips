@@ -137,3 +137,20 @@ If initially any vertex is added in dequeue as dist[u], then it can be added aga
             }
         };
 ```
+
+#### Set/Priority Queue with custom comparator
+ 
+ ```cpp
+ struct Edge {
+ 	int a,b,w;
+ };
+
+ struct cmp {
+ 	bool operator()(const Edge& x, const Edge& y) const { return x.w < y.w; }
+ };
+ 
+ int main(){
+ 	set<Edge,cmp> s;
+		priority_queue<Edge,vector<Edge>,cmp> pq; // since priority queue stores element in reverse, you will get edge with max weight first
+ }
+```
