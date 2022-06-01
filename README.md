@@ -154,3 +154,30 @@ If initially any vertex is added in dequeue as dist[u], then it can be added aga
 		priority_queue<Edge,vector<Edge>,cmp> pq; // since priority queue stores element in reverse, you will get edge with max weight first
  }
 ```
+
+
+
+#### Unordered Map for custom class
+ 
+ ```cpp
+struct Key{
+	string name;
+	int age;
+	bool operator==(const Key &rhs) const{
+		return name == rhs.name && age == rhs.age;
+	}
+	struct KeyHash{
+		size_t operator()(const Key &k) const{
+			size_t x1 = hash<string>()(k.name);
+			size_t x2 = hash<int>()(k.age);
+			return (x1) ^ (x2 << 1);
+		}
+	};
+}; //https://en.cppreference.com/w/cpp/container/unordered_map/unordered_map
+
+int main(){
+	unordered_map<Key, string, Key::KeyHash> mp = {
+		{{"Aryan", 20}, "India"},
+		{{"Mary", 30}, "USA"}};
+}
+```
