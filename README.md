@@ -181,3 +181,12 @@ int main(){
 		{{"Mary", 30}, "USA"}};
 }
 ```
+
+
+#### Get First and Last Occurence of an element
+
+```cpp
+int first = find(s.begin(),s.end(),'a')-s.begin(); // first = n, if not found
+int last = find(s.rbegin(),s.rend(),'a')-s.rbegin(); // this will give index starting from back
+last=n-1-last; // last=-1, if not found
+```
