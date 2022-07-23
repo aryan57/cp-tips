@@ -8,9 +8,9 @@ using namespace std;
 #define int long long
 int n,m,k;
 
-using pii = pair<int,int>;
+using pp = vector <int> ;
 
-map<pii,int> dp;
+map<pp,int> dp;
 int g[17][17];
 
 int f(int x,int y,int rem){
@@ -18,8 +18,10 @@ int f(int x,int y,int rem){
 		if(g[x][y]%k==rem)return 1;
 		return 0;
 	}
-	if(dp.count({x,y}))return dp[{x,y}];
 
+	if(dp.count({x,y,rem}))return dp[{x,y,rem}];
+
+	int org=rem;
 	rem-=g[x][y];
 	rem%=k;
 	rem+=k;
@@ -28,7 +30,7 @@ int f(int x,int y,int rem){
 	int ans=0;
 	if(x>1)ans+=f(x-1,y,rem);
 	if(y>1)ans+=f(x,y-1,rem);
-	return dp[{x,y}]=ans;
+	return dp[{x,y,org}]=ans;
 }
 
 void solve()
@@ -40,6 +42,7 @@ void solve()
 			cin>>g[i][j];
 		}
 	}
+
 	cin>>k;
 	cout<<f(n,m,0);
 }
@@ -49,7 +52,7 @@ signed main()
 	ios_base::sync_with_stdio(false);
 	cin.tie(nullptr);
 	int _t=1;
-	// cin>>_t;
+	cin>>_t;
 	for (int i=1;i<=_t;i++){
 		// cout<<"Case #"<<i<<": ";
 		solve();
