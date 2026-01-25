@@ -1,0 +1,15 @@
+# ssh config file
+
+# for docker ubuntu container
+Host localhost-2222
+  HostName localhost
+  Port 2222
+  User aryan
+# cph extension works on port 27121, so we forward it to local macbook
+  LocalForward localhost:27121 localhost:27121
+
+
+Host rasberrypi5
+  HostName 192.168.1.101
+  User aryan
+  IdentityFile /Users/aryan/.ssh/id_ed25519
